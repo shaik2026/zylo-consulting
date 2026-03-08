@@ -1,6 +1,9 @@
 [build]
-  command = "dotnet publish -c Release -o output"
+  command = "curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 8.0.418 && export PATH=\"$HOME/.dotnet:$PATH\" && dotnet publish -c Release -o output"
   publish = "output/wwwroot"
+
+[build.environment]
+  DOTNET_VERSION = "8.0"
 
 [[redirects]]
   from = "/*"
