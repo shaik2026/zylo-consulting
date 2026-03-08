@@ -1,7 +1,17 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        <ErrorBoundary>
+            <ChildContent>
+                <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            </ChildContent>
+            <ErrorContent Context="ex">
+                <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a2e;color:#fff;padding:2rem;z-index:9999;overflow:auto;font-family:monospace;">
+                    <h2 style="color:#ff6b6b">🔴 Runtime Exception</h2>
+                    <pre style="background:#0d0d1a;padding:1rem;border-radius:8px;white-space:pre-wrap;font-size:0.85rem;">@ex.ToString()</pre>
+                </div>
+            </ErrorContent>
+        </ErrorBoundary>
     </Found>
     <NotFound>
         <PageTitle>Not found</PageTitle>
