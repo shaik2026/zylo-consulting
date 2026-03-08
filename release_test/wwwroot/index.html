@@ -22,22 +22,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/app.css" />
-
-    <!-- SPA redirect: restore path from 404.html redirect -->
-    <script>
-        (function () {
-            var redirect = sessionStorage.getItem('redirect');
-            if (redirect && redirect !== '/') {
-                sessionStorage.removeItem('redirect');
-                history.replaceState(null, null, redirect);
-            }
-        })();
-    </script>
-
-    <!-- Hide Blazor error bar - intermittent startup timing errors self-resolve -->
-    <style>
-        #blazor-error-ui { display: none !important; }
-    </style>
 </head>
 
 <body>
