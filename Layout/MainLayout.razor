@@ -53,10 +53,14 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            await JS.InvokeVoidAsync("siteInit");
+        {
+            try { await JS.InvokeVoidAsync("siteInit"); }
+            catch { /* JS not ready yet - non-fatal */ }
+        }
     }
     private async Task CloseMobile()
     {
-        await JS.InvokeVoidAsync("closeMobileMenu");
+        try { await JS.InvokeVoidAsync("closeMobileMenu"); }
+        catch { /* non-fatal */ }
     }
 }
