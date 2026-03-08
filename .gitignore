@@ -8,6 +8,11 @@ output/
 
 ## Blazor WASM
 wwwroot/_content/
+wwwroot/css/bootstrap/
+wwwroot/sample-data/
+
+## Blazor WASM
+wwwroot/_content/
 
 ## OS / IDE
 .DS_Store
