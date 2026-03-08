@@ -1,0 +1,32 @@
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<nav id="navbar">
+    <a href="/" class="brand-logo">
+        <img src="images/zylo-logo-dark.png" alt="Zylo Consulting" />
+    </a>
+    <ul class="nav-links">
+        <li><a href="/" class="@IsActive("/")">Home</a></li>
+        <li><a href="/services" class="@IsActive("/services")">Services</a></li>
+        <li><a href="/about" class="@IsActive("/about")">About Us</a></li>
+        <li><a href="/blogs" class="@IsActive("/blogs")">Blog</a></li>
+    </ul>
+    <a href="/contact" class="nav-cta">Get In Touch →</a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" @onclick="ToggleMobile">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+@code {
+    private string IsActive(string href)
+    {
+        var current = Nav.Uri;
+        if (href == "/")
+            return current.EndsWith("/") || current == Nav.BaseUri ? "active" : "";
+        return current.Contains(href) ? "active" : "";
+    }
+    private async Task ToggleMobile()
+    {
+        await JS.InvokeVoidAsync("toggleMobileMenu");
+    }
+}

@@ -1,0 +1,125 @@
+@page "/services"
+@inject IJSRuntime JS
+
+<PageTitle>Services | Zylo Consulting</PageTitle>
+
+<div class="page-header">
+    <span class="section-tag">What We Offer</span>
+    <h1>Our <span class="gradient-text">Services</span></h1>
+    <p>Comprehensive IT solutions tailored for growing UK businesses — no lock-ins, no surprises.</p>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="services-grid">
+            <div class="service-card-wrap glass-card reveal">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Managed IT Services</h3>
+                    <p>Proactive technology management and ongoing support to keep your systems running around the clock.</p>
+                    <ul>
+                        <li>24/7 system monitoring & alerting</li>
+                        <li>Automated patch management</li>
+                        <li>Help desk & service desk support</li>
+                        <li>Performance reporting & SLAs</li>
+                        <li>IT asset management</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-1">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Migration</h3>
+                    <p>Seamless migration to public, private or hybrid cloud environments with zero downtime.</p>
+                    <ul>
+                        <li>Azure, AWS, Google Cloud</li>
+                        <li>Cloud readiness assessment</li>
+                        <li>Data migration & validation</li>
+                        <li>Cloud cost optimisation</li>
+                        <li>Hybrid cloud architecture</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-2">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business from evolving cyber threats. From audits to incident response.</p>
+                    <ul>
+                        <li>Threat monitoring & SIEM</li>
+                        <li>Penetration testing</li>
+                        <li>Security policy development</li>
+                        <li>Employee awareness training</li>
+                        <li>GDPR & compliance support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-3">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Technical Support</h3>
+                    <p>Fast, friendly expert support for your team — remote or on-site anywhere in the UK.</p>
+                    <ul>
+                        <li>Remote & on-site helpdesk</li>
+                        <li>Hardware procurement & setup</li>
+                        <li>Software licensing & support</li>
+                        <li>Printer, network device support</li>
+                        <li>User onboarding & offboarding</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-1">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Network & Infrastructure</h3>
+                    <p>Design, deploy and maintain fast, reliable, secure network infrastructure for your office.</p>
+                    <ul>
+                        <li>Network design & deployment</li>
+                        <li>Wi-Fi optimisation</li>
+                        <li>VPN & remote access</li>
+                        <li>Firewall configuration</li>
+                        <li>ISP management</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-2">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>IT Consultancy</h3>
+                    <p>Strategic technology guidance to align your IT roadmap with your business objectives.</p>
+                    <ul>
+                        <li>IT strategy & roadmap</li>
+                        <li>Digital transformation</li>
+                        <li>Vendor selection & management</li>
+                        <li>Technology audits</li>
+                        <li>Budget planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding-top:0">
+    <div class="container">
+        <div class="cta-banner reveal">
+            <h2>Not Sure Which Service You Need?</h2>
+            <p>Book a free consultation and one of our experts will assess your current setup and recommend the best path forward.</p>
+            <a href="/contact" class="btn-primary">Get Free Assessment →</a>
+        </div>
+    </div>
+</section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await JS.InvokeVoidAsync("scrollRevealInit");
+    }
+}

@@ -1,0 +1,74 @@
+@page "/blogs"
+@inject IJSRuntime JS
+
+<PageTitle>Blog | Zylo Consulting</PageTitle>
+
+<div class="page-header">
+    <span class="section-tag">Insights & Updates</span>
+    <h1>Our <span class="gradient-text">Blog</span></h1>
+    <p>Expert insights, IT tips, and industry news from the Zylo Consulting team.</p>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="blog-filters reveal">
+            <button class="filter-btn active" @onclick='() => SetFilter("All")'>All Posts</button>
+            <button class="filter-btn" @onclick='() => SetFilter("Cloud")'>Cloud</button>
+            <button class="filter-btn" @onclick='() => SetFilter("Security")'>Security</button>
+            <button class="filter-btn" @onclick='() => SetFilter("IT Tips")'>IT Tips</button>
+            <button class="filter-btn" @onclick='() => SetFilter("News")'>News</button>
+        </div>
+        <div class="blog-grid">
+            @foreach (var post in FilteredPosts)
+            {
+                <div class="blog-card glass-card reveal">
+                    <div class="blog-card-img">@post.Emoji</div>
+                    <div class="blog-card-body">
+                        <span class="blog-tag">@post.Tag</span>
+                        <h3>@post.Title</h3>
+                        <p>@post.Excerpt</p>
+                        <div class="blog-meta">
+                            <span>@post.Date</span>
+                            <span>·</span>
+                            <span>@post.ReadTime</span>
+                        </div>
+                        <br />
+                        <a href="#" class="blog-read-more">Read More →</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    private string ActiveFilter = "All";
+    private record BlogPost(string Emoji, string Tag, string Title, string Excerpt, string Date, string ReadTime);
+
+    private List<BlogPost> AllPosts = new()
+    {
+        new("☁️", "Cloud", "Top 5 Reasons to Migrate Your Business to Azure in 2026",
+            "Azure continues to dominate cloud adoption for UK SMBs. Here's why 2026 is the perfect time to make the move.", "Mar 5, 2026", "5 min read"),
+        new("🛡️", "Security", "How to Protect Your Business from Ransomware in 2026",
+            "Ransomware attacks have increased 300% in the last two years. Here are the steps every UK business must take now.", "Feb 28, 2026", "7 min read"),
+        new("💡", "IT Tips", "10 IT Habits That Will Save Your Business Time and Money",
+            "Simple, practical IT habits that could save your team hundreds of hours a year and cut your IT costs significantly.", "Feb 20, 2026", "4 min read"),
+        new("🌐", "Cloud", "Hybrid Cloud vs. Full Cloud: Which Is Right for Your Business?",
+            "We break down the pros and cons of both approaches to help you make the right decision for your infrastructure.", "Feb 14, 2026", "6 min read"),
+        new("📋", "News", "Zylo Consulting Achieves Microsoft Azure Expert Status",
+            "We are proud to announce that Zylo Consulting has achieved Microsoft Azure Expert Managed Service Provider status.", "Jan 30, 2026", "2 min read"),
+        new("🔑", "Security", "Why Multi-Factor Authentication Is No Longer Optional",
+            "MFA blocks 99.9% of automated attacks. If your business isn't using it across all accounts, here's what to do.", "Jan 22, 2026", "5 min read"),
+    };
+
+    private IEnumerable<BlogPost> FilteredPosts =>
+        ActiveFilter == "All" ? AllPosts : AllPosts.Where(p => p.Tag == ActiveFilter);
+
+    private void SetFilter(string filter) => ActiveFilter = filter;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await JS.InvokeVoidAsync("scrollRevealInit");
+    }
+}

@@ -1,0 +1,157 @@
+@page "/"
+@inject IJSRuntime JS
+
+<PageTitle>Zylo Consulting | Modern IT Solutions</PageTitle>
+
+<!-- Hero -->
+<section class="hero">
+    <div style="max-width:900px;">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            London-Based IT Consultants
+        </div>
+        <h1>Bold IT Solutions for<br /><span class="gradient-text">Modern Business</span></h1>
+        <p>Enterprise-grade technology consulting — without the enterprise complexity. We help small and medium businesses grow, secure, and scale with next-gen IT.</p>
+        <div class="hero-btns">
+            <a href="/services" class="btn-primary">Explore Services →</a>
+            <a href="/contact" class="btn-outline">Book Free Consultation</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-num">99.9%</span>
+                <span class="stat-label">Uptime SLA</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">24/7</span>
+                <span class="stat-label">Support</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">50+</span>
+                <span class="stat-label">Clients</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">0</span>
+                <span class="stat-label">Lock-in Contracts</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header reveal" style="margin-bottom:3.5rem;">
+            <span class="section-tag">What We Do</span>
+            <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+            <p class="section-subtitle">Comprehensive IT solutions designed to help your business grow, stay secure, and operate efficiently.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card-wrap glass-card reveal reveal-delay-1">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Managed IT Services</h3>
+                    <p>Proactive technology management so your systems run without interruption.</p>
+                    <ul>
+                        <li>24/7 monitoring & alerting</li>
+                        <li>Patch management</li>
+                        <li>Help desk support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-2">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Migration</h3>
+                    <p>Move to the cloud seamlessly with zero downtime and maximum efficiency.</p>
+                    <ul>
+                        <li>Azure, AWS, Google Cloud</li>
+                        <li>Data migration</li>
+                        <li>Cost optimisation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-3">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business from modern threats, breaches, and compliance risks.</p>
+                    <ul>
+                        <li>Threat monitoring</li>
+                        <li>Security audits</li>
+                        <li>Staff training</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card-wrap glass-card reveal reveal-delay-4">
+                <div class="service-top-bar"></div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Technical Support</h3>
+                    <p>Fast, expert support to keep your team productive and your systems online.</p>
+                    <ul>
+                        <li>Remote & on-site support</li>
+                        <li>Hardware procurement</li>
+                        <li>Software troubleshooting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:3rem;">
+            <a href="/services" class="btn-outline">View All Services →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Us -->
+<section class="section" style="background: linear-gradient(180deg, rgba(0,102,255,0.02) 0%, transparent 100%)">
+    <div class="container">
+        <div class="section-header reveal" style="margin-bottom:3.5rem;">
+            <span class="section-tag">Why Zylo</span>
+            <h2 class="section-title">Why Choose <span class="gradient-text">Us</span></h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-ring">🚀</div>
+                <h3>Modern Technology</h3>
+                <p>We only work with best-in-class, future-proof technologies that give your business a competitive edge.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-ring">💎</div>
+                <h3>Transparent Pricing</h3>
+                <p>No hidden fees, no long-term lock-ins. Clear, honest pricing that scales with your business.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-ring">🎯</div>
+                <h3>Business-First Approach</h3>
+                <p>We understand your challenges. Our solutions are designed around your goals, not generic templates.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-4">
+                <div class="feature-ring">🏆</div>
+                <h3>Certified Experts</h3>
+                <p>Our team holds certifications across Azure, AWS, and Google Cloud with real-world delivery experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+    <div class="container">
+        <div class="cta-banner reveal">
+            <h2>Ready to <span class="gradient-text">Transform</span> Your IT?</h2>
+            <p>Let's talk about how Zylo Consulting can help your business grow with the right technology.</p>
+            <a href="/contact" class="btn-primary">Schedule Free Consultation →</a>
+        </div>
+    </div>
+</section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await JS.InvokeVoidAsync("scrollRevealInit");
+    }
+}
