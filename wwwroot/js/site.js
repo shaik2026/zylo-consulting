@@ -2,7 +2,19 @@
 // SITE.JS — Zylo Consulting
 // =============================================
 
-window.siteInit = function () {
+// All functions are on window so Blazor can call them safely
+window.siteInit = function () { /* no-op - init runs automatically */ };
+window.scrollRevealInit = _doScrollReveal;
+window.toggleMobileMenu = _doToggle;
+window.closeMobileMenu = _doClose;
+
+// Self-initializing — no Blazor interop needed on startup
+document.addEventListener('DOMContentLoaded', _init);
+// Also run on Blazor navigation (in case DOM was updated)
+document.addEventListener('blazor:navigated', _doScrollReveal);
+
+function _init() {
+    // Navbar scroll
     try {
         const nav = document.getElementById('navbar');
         if (nav) {
@@ -10,53 +22,47 @@ window.siteInit = function () {
                 nav.classList.toggle('scrolled', window.pageYOffset > 60);
             });
         }
-        window.scrollRevealInit();
-    } catch (e) {
-        console.warn('siteInit error (non-fatal):', e);
-    }
-};
+    } catch (e) {}
+    _doScrollReveal();
+}
 
-window.scrollRevealInit = function () {
+function _doScrollReveal() {
     try {
-        const reveals = document.querySelectorAll('.reveal');
-        if (!reveals || !reveals.length) return;
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-        reveals.forEach(function (el) { observer.observe(el); });
-    } catch (e) {
-        console.warn('scrollRevealInit error (non-fatal):', e);
-    }
-};
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            if (!el._revealObserved) {
+                el._revealObserved = true;
+                var obs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('visible');
+                            obs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+                obs.observe(el);
+            }
+        });
+    } catch (e) {}
+}
 
-window.toggleMobileMenu = function () {
+function _doToggle() {
     try {
-        const menu = document.getElementById('mobileMenu');
-        const toggle = document.getElementById('mobileToggle');
+        var menu = document.getElementById('mobileMenu');
+        var toggle = document.getElementById('mobileToggle');
         if (!menu) return;
         menu.classList.toggle('open');
         if (toggle) toggle.classList.toggle('active');
         document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    } catch (e) {
-        console.warn('toggleMobileMenu error (non-fatal):', e);
-    }
-};
+    } catch (e) {}
+}
 
-window.closeMobileMenu = function () {
+function _doClose() {
     try {
-        const menu = document.getElementById('mobileMenu');
-        const toggle = document.getElementById('mobileToggle');
+        var menu = document.getElementById('mobileMenu');
+        var toggle = document.getElementById('mobileToggle');
         if (!menu) return;
         menu.classList.remove('open');
         if (toggle) toggle.classList.remove('active');
         document.body.style.overflow = '';
-    } catch (e) {
-        console.warn('closeMobileMenu error (non-fatal):', e);
-    }
-};
-
+    } catch (e) {}
+}
