@@ -46,8 +46,3 @@ function closeMobileMenu() {
     document.body.style.overflow = '';
 }
 
-// Re-init on Blazor page navigation
-Blazor.addEventListener('enhancedload', () => {
-    scrollRevealInit();
-    closeMobileMenu();
-});
