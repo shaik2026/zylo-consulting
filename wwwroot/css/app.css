@@ -195,7 +195,7 @@ ul { list-style: none; }
   gap: 16px;
 }
 
-.topbar-logo img { height: 52px; }
+.topbar-logo img { height: 85px; }
 
 .topbar-contact {
   display: flex;
