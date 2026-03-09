@@ -1,104 +1,126 @@
 @page "/services"
 @inject IJSRuntime JS
 
-<PageTitle>Services | Zylo Consulting</PageTitle>
+<PageTitle>Our Services | Zylo Consulting</PageTitle>
 
-<div class="page-header">
-    <span class="section-tag">What We Offer</span>
-    <h1>Our <span class="gradient-text">Services</span></h1>
-    <p>Comprehensive IT solutions tailored for growing UK businesses — no lock-ins, no surprises.</p>
+<!-- Page Hero -->
+<div class="page-hero">
+    <div class="container page-hero-inner">
+        <div>
+            <h1>Our Services</h1>
+            <div class="orange-bar"></div>
+        </div>
+        <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span class="sep">›</span>
+            <span class="current">Services</span>
+        </nav>
+    </div>
 </div>
 
-<section class="section">
+<!-- Intro -->
+<section class="section section-gray">
     <div class="container">
-        <div class="services-grid">
-            <div class="service-card-wrap glass-card reveal">
-                <div class="service-top-bar"></div>
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
+        <div class="text-center reveal">
+            <span class="section-tag">Enterprise Solutions</span>
+            <h2 class="section-title">Comprehensive IT <span class="accent">Services</span></h2>
+            <div class="section-underline center"></div>
+            <p class="section-subtitle" style="margin: 0 auto;">From day-to-day IT management to full digital transformation, we provide the technology backbone that keeps your business moving forward.</p>
+        </div>
+
+        <div class="services-detail-grid">
+            <div class="service-detail-card reveal reveal-delay-1">
+                <div class="service-detail-top">
+                    <div class="icon-wrap">⚙️</div>
                     <h3>Managed IT Services</h3>
-                    <p>Proactive technology management and ongoing support to keep your systems running around the clock.</p>
+                </div>
+                <div class="service-detail-body">
+                    <p>Fully outsourced IT management for your organisation. Our experts handle everything from helpdesk to infrastructure, letting you focus on your core business.</p>
                     <ul>
-                        <li>24/7 system monitoring & alerting</li>
-                        <li>Automated patch management</li>
-                        <li>Help desk & service desk support</li>
-                        <li>Performance reporting & SLAs</li>
-                        <li>IT asset management</li>
+                        <li>24/7 helpdesk & remote support</li>
+                        <li>Proactive system monitoring</li>
+                        <li>Patch management & updates</li>
+                        <li>Vendor management</li>
                     </ul>
                 </div>
             </div>
-            <div class="service-card-wrap glass-card reveal reveal-delay-1">
-                <div class="service-top-bar"></div>
-                <div class="service-card">
-                    <div class="service-icon">☁️</div>
+
+            <div class="service-detail-card reveal reveal-delay-2">
+                <div class="service-detail-top">
+                    <div class="icon-wrap">☁️</div>
                     <h3>Cloud Migration</h3>
-                    <p>Seamless migration to public, private or hybrid cloud environments with zero downtime.</p>
+                </div>
+                <div class="service-detail-body">
+                    <p>Seamless migration to cloud platforms with zero-downtime deployments. We manage the entire journey from assessment to go-live and beyond.</p>
                     <ul>
                         <li>Azure, AWS, Google Cloud</li>
                         <li>Cloud readiness assessment</li>
-                        <li>Data migration & validation</li>
-                        <li>Cloud cost optimisation</li>
-                        <li>Hybrid cloud architecture</li>
+                        <li>Data migration & backup</li>
+                        <li>Cost optimisation</li>
                     </ul>
                 </div>
             </div>
-            <div class="service-card-wrap glass-card reveal reveal-delay-2">
-                <div class="service-top-bar"></div>
-                <div class="service-card">
-                    <div class="service-icon">🛡️</div>
+
+            <div class="service-detail-card reveal reveal-delay-3">
+                <div class="service-detail-top">
+                    <div class="icon-wrap">🛡️</div>
                     <h3>Cybersecurity</h3>
-                    <p>Protect your business from evolving cyber threats. From audits to incident response.</p>
+                </div>
+                <div class="service-detail-body">
+                    <p>Comprehensive cybersecurity solutions to protect your business assets, data, and reputation against evolving modern threats.</p>
                     <ul>
-                        <li>Threat monitoring & SIEM</li>
                         <li>Penetration testing</li>
-                        <li>Security policy development</li>
-                        <li>Employee awareness training</li>
-                        <li>GDPR & compliance support</li>
+                        <li>Threat detection & response</li>
+                        <li>GDPR & compliance</li>
+                        <li>Security awareness training</li>
                     </ul>
                 </div>
             </div>
-            <div class="service-card-wrap glass-card reveal reveal-delay-3">
-                <div class="service-top-bar"></div>
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3>Technical Support</h3>
-                    <p>Fast, friendly expert support for your team — remote or on-site anywhere in the UK.</p>
-                    <ul>
-                        <li>Remote & on-site helpdesk</li>
-                        <li>Hardware procurement & setup</li>
-                        <li>Software licensing & support</li>
-                        <li>Printer, network device support</li>
-                        <li>User onboarding & offboarding</li>
-                    </ul>
+
+            <div class="service-detail-card reveal reveal-delay-1">
+                <div class="service-detail-top">
+                    <div class="icon-wrap">🌐</div>
+                    <h3>Network Infrastructure</h3>
                 </div>
-            </div>
-            <div class="service-card-wrap glass-card reveal reveal-delay-1">
-                <div class="service-top-bar"></div>
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Network & Infrastructure</h3>
-                    <p>Design, deploy and maintain fast, reliable, secure network infrastructure for your office.</p>
+                <div class="service-detail-body">
+                    <p>Design, deploy, and manage enterprise-grade network infrastructure that is secure, resilient, and built to scale with your business.</p>
                     <ul>
-                        <li>Network design & deployment</li>
-                        <li>Wi-Fi optimisation</li>
+                        <li>LAN/WAN design & implementation</li>
+                        <li>Firewall management</li>
                         <li>VPN & remote access</li>
-                        <li>Firewall configuration</li>
-                        <li>ISP management</li>
+                        <li>Network monitoring</li>
                     </ul>
                 </div>
             </div>
-            <div class="service-card-wrap glass-card reveal reveal-delay-2">
-                <div class="service-top-bar"></div>
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>IT Consultancy</h3>
-                    <p>Strategic technology guidance to align your IT roadmap with your business objectives.</p>
+
+            <div class="service-detail-card reveal reveal-delay-2">
+                <div class="service-detail-top">
+                    <div class="icon-wrap">💻</div>
+                    <h3>Technical Support</h3>
+                </div>
+                <div class="service-detail-body">
+                    <p>Fast, responsive technical support that minimises downtime and keeps your team productive. Available remotely and on-site across London.</p>
                     <ul>
-                        <li>IT strategy & roadmap</li>
-                        <li>Digital transformation</li>
-                        <li>Vendor selection & management</li>
-                        <li>Technology audits</li>
-                        <li>Budget planning</li>
+                        <li>Multi-channel helpdesk</li>
+                        <li>On-site engineer visits</li>
+                        <li>Hardware & software support</li>
+                        <li>User training</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-detail-card reveal reveal-delay-3">
+                <div class="service-detail-top">
+                    <div class="icon-wrap">🔄</div>
+                    <h3>Digital Transformation</h3>
+                </div>
+                <div class="service-detail-body">
+                    <p>Strategic guidance to modernise your business processes through intelligent use of technology. We align tech investment with your business outcomes.</p>
+                    <ul>
+                        <li>IT strategy consulting</li>
+                        <li>Process automation</li>
+                        <li>Microsoft 365 rollout</li>
+                        <li>Technology roadmapping</li>
                     </ul>
                 </div>
             </div>
@@ -106,12 +128,15 @@
     </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<!-- CTA -->
+<section class="cta-banner-section">
     <div class="container">
-        <div class="cta-banner reveal">
-            <h2>Not Sure Which Service You Need?</h2>
-            <p>Book a free consultation and one of our experts will assess your current setup and recommend the best path forward.</p>
-            <a href="/contact" class="btn-primary">Get Free Assessment →</a>
+        <div class="cta-banner-inner reveal">
+            <div class="cta-banner-text">
+                <h2>Not sure which service is<br /><span class="highlight">right for your business?</span></h2>
+                <p>Talk to one of our consultants for a free, no-obligation discussion about your IT needs.</p>
+            </div>
+            <a href="/contact" class="btn btn-orange">Book Free Consultation →</a>
         </div>
     </div>
 </section>
@@ -120,7 +145,8 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            try { await JS.InvokeVoidAsync("scrollRevealInit"); }
-            catch { }
+        {
+            try { await JS.InvokeVoidAsync("scrollRevealInit"); } catch { }
+        }
     }
 }

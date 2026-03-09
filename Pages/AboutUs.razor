@@ -3,103 +3,144 @@
 
 <PageTitle>About Us | Zylo Consulting</PageTitle>
 
-<div class="page-header">
-    <span class="section-tag">Our Story</span>
-    <h1>About <span class="gradient-text">Zylo Consulting</span></h1>
-    <p>A London-based IT consultancy built to give small businesses access to enterprise-grade technology.</p>
+<!-- Page Hero -->
+<div class="page-hero">
+    <div class="container page-hero-inner">
+        <div>
+            <h1>About Us</h1>
+            <div class="orange-bar"></div>
+        </div>
+        <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span class="sep">›</span>
+            <span class="current">About Us</span>
+        </nav>
+    </div>
 </div>
 
-<section class="section">
+<!-- Intro -->
+<section class="section section-light">
     <div class="container">
-        <div class="about-grid">
-            <div class="about-text reveal">
-                <span class="section-tag">Who We Are</span>
-                <h2>Technology Partner, <span class="gradient-text">Not Just IT Support</span></h2>
-                <p>Zylo Consulting Limited was founded with a single mission: to make enterprise-grade IT accessible to businesses of every size. Too many small businesses are left behind by legacy IT providers who over-complicate, over-charge, and under-deliver.</p>
-                <p>We believe technology should work for you — reliably, securely, and efficiently. Our team of certified consultants work as an extension of your business, understanding your goals and delivering solutions that actually move the needle.</p>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="icon">🎯</div>
-                        <h4>Results-Driven</h4>
-                        <p>Every solution is measured by real business outcomes.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="icon">🔒</div>
-                        <h4>Security-First</h4>
-                        <p>Security is built-in, not bolted on.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="icon">💡</div>
-                        <h4>Forward-Thinking</h4>
-                        <p>We invest in emerging tech so you stay ahead.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="icon">🤝</div>
-                        <h4>Transparent</h4>
-                        <p>Clear pricing, honest advice — always.</p>
-                    </div>
-                </div>
+        <div class="about-intro">
+            <div class="reveal">
+                <span class="section-tag">Our Story</span>
+                <h2 class="section-title">A Fast-Growing <span class="accent">IT Consultancy</span></h2>
+                <div class="section-underline"></div>
+                <p style="color:var(--text-light); line-height:1.8; margin-bottom:16px;">Founded with a clear mission: to give small and medium businesses access to the same quality of IT support and expertise as large enterprises — but without the complexity or the cost.</p>
+                <p style="color:var(--text-light); line-height:1.8; margin-bottom:24px;">Our team of certified engineers and IT strategists has a proven track record of delivering practical, no-nonsense solutions that genuinely move businesses forward. We're passionate about technology, but we measure our success by yours.</p>
+                <a href="/contact" class="btn btn-orange">Get In Touch</a>
             </div>
-            <div class="about-visual reveal reveal-delay-2">
-                <div class="about-blob">
-                    <div class="blob-inner">
-                        <div class="num">5+</div>
-                        <p>Years delivering<br />IT excellence</p>
-                    </div>
+            <div class="reveal reveal-delay-2" style="background:var(--off-white); border-radius:var(--radius-lg); padding:40px; border-left:4px solid var(--orange);">
+                <h3 style="font-family:var(--font-head); font-size:1rem; font-weight:800; text-transform:uppercase; color:var(--navy); margin-bottom:20px; letter-spacing:1px;">Why Businesses Choose Us</h3>
+                <div style="display:flex; flex-direction:column; gap:16px;">
+                    @foreach (var reason in reasons)
+                    {
+                        <div style="display:flex; gap:12px; align-items:flex-start;">
+                            <span style="color:var(--green); font-weight:700; font-size:1.2rem; flex-shrink:0;">✓</span>
+                            <div>
+                                <strong style="display:block; font-family:var(--font-head); font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:2px;">@reason.Title</strong>
+                                <span style="font-size:0.85rem; color:var(--text-light);">@reason.Desc</span>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section" style="padding-top:0;">
+<!-- Values -->
+<section class="section section-gray">
     <div class="container">
-        <div style="max-width:700px; margin: 0 auto;">
-            <div class="section-header reveal" style="text-align:left; margin-bottom:3rem;">
-                <span class="section-tag">Our Journey</span>
-                <h2 class="section-title">Company <span class="gradient-text">Timeline</span></h2>
-            </div>
-            <div class="timeline reveal">
-                <div class="timeline-item">
-                    <div class="year">2019</div>
-                    <h4>Founded in London</h4>
-                    <p>Zylo Consulting was established to serve small London businesses with professional IT support.</p>
+        <div class="text-center reveal">
+            <span class="section-tag">What Drives Us</span>
+            <h2 class="section-title">Our Core <span class="accent">Values</span></h2>
+            <div class="section-underline center"></div>
+        </div>
+        <div class="about-values-grid">
+            @foreach (var (value, i) in values.Select((v, i) => (v, i)))
+            {
+                <div class="value-card reveal reveal-delay-@((i % 3) + 1)">
+                    <div class="value-icon">@value.Icon</div>
+                    <h4>@value.Title</h4>
+                    <p>@value.Desc</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="year">2021</div>
-                    <h4>Cloud Practice Launch</h4>
-                    <p>Launched our dedicated cloud migration practice, becoming certified Azure and AWS partners.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="year">2023</div>
-                    <h4>Cybersecurity Division</h4>
-                    <p>Expanded into managed cybersecurity services following growing demand from UK businesses post-COVID.</p>
-                </div>
-                <div class="timeline-item" style="padding-bottom:0;">
-                    <div class="year">2026</div>
-                    <h4>50+ Clients Served</h4>
-                    <p>Reached 50 active clients across London and the wider UK, maintaining a 99.9% uptime SLA record.</p>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
 
-<section class="section" style="padding-top:0;">
+<!-- Timeline -->
+<section class="section section-dark">
     <div class="container">
-        <div class="cta-banner reveal">
-            <h2>Want to Know More?</h2>
-            <p>Reach out to our team — we're always happy to have a conversation about how we can help your business.</p>
-            <a href="/contact" class="btn-primary">Get In Touch →</a>
+        <div class="text-center reveal" style="margin-bottom:48px;">
+            <span class="section-tag">Our Journey</span>
+            <h2 class="section-title section-title-white">How We Got <span class="accent">Here</span></h2>
+            <div class="section-underline center"></div>
+        </div>
+        <div class="timeline">
+            @foreach (var item in milestones)
+            {
+                <div class="tl-item reveal">
+                    <div class="tl-dot">@item.Year</div>
+                    <div class="tl-content">
+                        <h4>@item.Title</h4>
+                        <p>@item.Desc</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner-section">
+    <div class="container">
+        <div class="cta-banner-inner reveal">
+            <div class="cta-banner-text">
+                <h2>Ready to work with <span class="highlight">Zylo Consulting?</span></h2>
+                <p>Let's discuss how we can support your business IT needs today.</p>
+            </div>
+            <a href="/contact" class="btn btn-orange">Contact Us →</a>
         </div>
     </div>
 </section>
 
 @code {
+    private record Reason(string Title, string Desc);
+    private record Value(string Icon, string Title, string Desc);
+    private record Milestone(string Year, string Title, string Desc);
+
+    private List<Reason> reasons = new() {
+        new("No Lock-in Contracts", "Month-to-month agreements that put you in control."),
+        new("Certified Engineers", "Microsoft, AWS, and Cisco certified specialists."),
+        new("Transparent Pricing", "Flat-rate plans with no hidden fees or surprise bills."),
+        new("UK-Based Support", "Real engineers based in London, not overseas call centres."),
+    };
+
+    private List<Value> values = new() {
+        new("🎯", "Integrity", "We give honest advice — even when it's not what clients want to hear."),
+        new("⚡", "Excellence", "We raise the bar on every project, every time. No shortcuts."),
+        new("🤝", "Partnership", "We act as an extension of your team, not just a vendor."),
+        new("🔍", "Transparency", "Clear communication, clear pricing, no surprises."),
+        new("🔒", "Security-First", "We bake security into everything we design and deliver."),
+        new("💡", "Innovation", "We stay ahead of technology trends so you don't have to."),
+    };
+
+    private List<Milestone> milestones = new() {
+        new("2020", "Founded in London", "Zylo Consulting was established with a mission to democratise enterprise IT for SMBs."),
+        new("2021", "First 10 Clients", "Grew our client base across legal, finance, and retail sectors in the City of London."),
+        new("2022", "Cloud Practice Launched", "Expanded services to include dedicated cloud migration and Azure managed services."),
+        new("2023", "Security Certification", "Achieved Cyber Essentials Plus and Microsoft Gold Partner status."),
+        new("2024", "25+ Clients", "Reached 25+ active clients with a 100% renewal rate for managed IT contracts."),
+        new("2025", "National Expansion", "Extended support coverage across the UK with remote-first service delivery."),
+    };
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            try { await JS.InvokeVoidAsync("scrollRevealInit"); }
-            catch { }
+        {
+            try { await JS.InvokeVoidAsync("scrollRevealInit"); } catch { }
+        }
     }
 }

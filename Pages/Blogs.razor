@@ -1,39 +1,54 @@
 @page "/blogs"
 @inject IJSRuntime JS
 
-<PageTitle>Blog | Zylo Consulting</PageTitle>
+<PageTitle>Insights & Blog | Zylo Consulting</PageTitle>
 
-<div class="page-header">
-    <span class="section-tag">Insights & Updates</span>
-    <h1>Our <span class="gradient-text">Blog</span></h1>
-    <p>Expert insights, IT tips, and industry news from the Zylo Consulting team.</p>
+<!-- Page Hero -->
+<div class="page-hero">
+    <div class="container page-hero-inner">
+        <div>
+            <h1>Insights &amp; Blog</h1>
+            <div class="orange-bar"></div>
+        </div>
+        <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span class="sep">›</span>
+            <span class="current">Insights</span>
+        </nav>
+    </div>
 </div>
 
-<section class="section">
+<!-- Blog Section -->
+<section class="section section-gray">
     <div class="container">
-        <div class="blog-filters reveal">
-            <button class="filter-btn active" @onclick='() => SetFilter("All")'>All Posts</button>
-            <button class="filter-btn" @onclick='() => SetFilter("Cloud")'>Cloud</button>
-            <button class="filter-btn" @onclick='() => SetFilter("Security")'>Security</button>
-            <button class="filter-btn" @onclick='() => SetFilter("IT Tips")'>IT Tips</button>
-            <button class="filter-btn" @onclick='() => SetFilter("News")'>News</button>
+        <div class="reveal">
+            <span class="section-tag">Latest Articles</span>
+            <h2 class="section-title">IT <span class="accent">Insights</span> & Guides</h2>
+            <div class="section-underline"></div>
         </div>
-        <div class="blog-grid">
-            @foreach (var post in FilteredPosts)
+
+        <!-- Filters -->
+        <div class="blog-filters reveal" style="margin-top:24px;">
+            @foreach (var tag in tags)
             {
-                <div class="blog-card glass-card reveal">
-                    <div class="blog-card-img">@post.Emoji</div>
+                <button class="filter-btn @(ActiveFilter == tag ? "active" : "")"
+                        @onclick="() => ActiveFilter = tag">@tag</button>
+            }
+        </div>
+
+        <div class="blog-grid">
+            @foreach (var (post, i) in FilteredPosts.Select((p, i) => (p, i)))
+            {
+                <div class="blog-card reveal reveal-delay-@((i % 3) + 1)">
+                    <div class="blog-card-top">@post.Emoji</div>
                     <div class="blog-card-body">
                         <span class="blog-tag">@post.Tag</span>
                         <h3>@post.Title</h3>
                         <p>@post.Excerpt</p>
                         <div class="blog-meta">
-                            <span>@post.Date</span>
-                            <span>·</span>
-                            <span>@post.ReadTime</span>
+                            <span>📅 @post.Date</span>
+                            <span>⏱ @post.ReadTime</span>
                         </div>
-                        <br />
-                        <a href="#" class="blog-read-more">Read More →</a>
                     </div>
                 </div>
             }
@@ -41,35 +56,45 @@
     </div>
 </section>
 
+<!-- Newsletter CTA -->
+<section class="cta-banner-section">
+    <div class="container">
+        <div class="cta-banner-inner" style="flex-direction:column; text-align:center; gap:24px;">
+            <div class="cta-banner-text">
+                <h2>Stay up to date with the latest <span class="highlight">IT insights</span></h2>
+                <p>Expert tips, guides, and news for technology leaders and business owners.</p>
+            </div>
+            <a href="/contact" class="btn btn-orange">Subscribe to Updates →</a>
+        </div>
+    </div>
+</section>
+
 @code {
     private string ActiveFilter = "All";
+    private List<string> tags = new() { "All", "Cloud", "Security", "Managed IT", "Strategy", "Microsoft 365" };
+
     private record BlogPost(string Emoji, string Tag, string Title, string Excerpt, string Date, string ReadTime);
 
-    private List<BlogPost> AllPosts = new()
-    {
-        new("☁️", "Cloud", "Top 5 Reasons to Migrate Your Business to Azure in 2026",
-            "Azure continues to dominate cloud adoption for UK SMBs. Here's why 2026 is the perfect time to make the move.", "Mar 5, 2026", "5 min read"),
-        new("🛡️", "Security", "How to Protect Your Business from Ransomware in 2026",
-            "Ransomware attacks have increased 300% in the last two years. Here are the steps every UK business must take now.", "Feb 28, 2026", "7 min read"),
-        new("💡", "IT Tips", "10 IT Habits That Will Save Your Business Time and Money",
-            "Simple, practical IT habits that could save your team hundreds of hours a year and cut your IT costs significantly.", "Feb 20, 2026", "4 min read"),
-        new("🌐", "Cloud", "Hybrid Cloud vs. Full Cloud: Which Is Right for Your Business?",
-            "We break down the pros and cons of both approaches to help you make the right decision for your infrastructure.", "Feb 14, 2026", "6 min read"),
-        new("📋", "News", "Zylo Consulting Achieves Microsoft Azure Expert Status",
-            "We are proud to announce that Zylo Consulting has achieved Microsoft Azure Expert Managed Service Provider status.", "Jan 30, 2026", "2 min read"),
-        new("🔑", "Security", "Why Multi-Factor Authentication Is No Longer Optional",
-            "MFA blocks 99.9% of automated attacks. If your business isn't using it across all accounts, here's what to do.", "Jan 22, 2026", "5 min read"),
+    private List<BlogPost> AllPosts = new() {
+        new("☁️", "Cloud", "Migrating to Azure in 2025: What SMBs Need to Know", "A practical guide to planning and executing a successful Azure migration without disrupting your operations.", "Mar 2025", "5 min read"),
+        new("🛡️", "Security", "Cyber Essentials Plus: Why It Matters for Your Business", "Learn how achieving Cyber Essentials Plus certification can protect your business and win more clients.", "Feb 2025", "6 min read"),
+        new("⚙️", "Managed IT", "5 Signs Your Business Has Outgrown Its IT Support", "Is your IT provider keeping up with your growth? Here are five warning signs to watch for.", "Feb 2025", "4 min read"),
+        new("📊", "Strategy", "Building a 3-Year IT Roadmap: A Guide for SMB Leaders", "How to plan your technology investments strategically to support growth and reduce risk.", "Jan 2025", "7 min read"),
+        new("📧", "Microsoft 365", "Getting the Most from Microsoft 365 Copilot", "Practical examples of how businesses are using Microsoft's AI tools to save time and improve productivity.", "Jan 2025", "5 min read"),
+        new("🔐", "Security", "Phishing Attacks Are Evolving — Is Your Team Ready?", "The latest phishing tactics targeting UK businesses and how to train your staff to recognise them.", "Dec 2024", "4 min read"),
+        new("☁️", "Cloud", "Hybrid Cloud vs Full Cloud: What's Right for Your Business?", "Comparing the two approaches to help you make the right infrastructure decision for your organisation.", "Dec 2024", "6 min read"),
+        new("⚙️", "Managed IT", "Why 24/7 IT Monitoring is No Longer Optional", "Downtime costs more than most business owners realise. Here's why proactive monitoring pays for itself.", "Nov 2024", "4 min read"),
+        new("📊", "Strategy", "IT Due Diligence: A Checklist for Business Acquisitions", "When acquiring a business, your IT audit is just as important as your financial due diligence.", "Nov 2024", "8 min read"),
     };
 
     private IEnumerable<BlogPost> FilteredPosts =>
         ActiveFilter == "All" ? AllPosts : AllPosts.Where(p => p.Tag == ActiveFilter);
 
-    private void SetFilter(string filter) => ActiveFilter = filter;
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            try { await JS.InvokeVoidAsync("scrollRevealInit"); }
-            catch { }
+        {
+            try { await JS.InvokeVoidAsync("scrollRevealInit"); } catch { }
+        }
     }
 }
