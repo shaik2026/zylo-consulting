@@ -183,8 +183,7 @@ ul { list-style: none; }
 
 /* ── Top Utility Bar ── */
 .topbar {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+  background: var(--navy-dark);
   padding: 8px 0;
 }
 
